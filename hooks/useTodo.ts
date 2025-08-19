@@ -52,6 +52,10 @@ const useTodo = () => {
     setTodos([...todos, { id: Number(new Date()), title, status: Status.INPROGRESS }]);
   };
 
+  const onDeleteTodo = (id: Todo['id'])=>{
+      setTodos(todos.filter(todo=>todo.id !== id));
+  }
+
   const completedTodos = todos.filter((todo) => todo.status===Status.COMPLETED);
 
   useEffect(() => {
@@ -66,6 +70,7 @@ const useTodo = () => {
 
   return {
     onAddTodo,
+    onDeleteTodo,
     todos,
     completedTodos,
     isLoading,

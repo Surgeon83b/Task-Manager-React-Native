@@ -4,10 +4,12 @@ import { TodoItem } from "../TodoItem"
 
 type TodoListProps = {
   todos: Todo[];
+  onDeleteTodo: (id: Todo['id']) => void;
 };
 
 const TodoList: React.FC<TodoListProps> = ({
   todos,
+  onDeleteTodo
 }) => {
   return (
     <View>
@@ -16,9 +18,10 @@ const TodoList: React.FC<TodoListProps> = ({
         keyExtractor={(todo) => todo.id.toString()}
         renderItem={({ item }) => (
           <TodoItem
-          id={item.id}
+            id={item.id}
             title={item.title}
             status={item.status}
+            onDelete={onDeleteTodo}
           />
         )}
       />

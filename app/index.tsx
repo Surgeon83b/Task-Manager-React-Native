@@ -10,6 +10,7 @@ export default function Index() {
     todos,
     completedTodos,
     onAddTodo,
+    onDeleteTodo,
     isLoading,
   } = useTodo();
 
@@ -24,6 +25,7 @@ export default function Index() {
       <TodoCreator onAddTodo={onAddTodo} />
       <TodoList
         todos={todos}
+        onDeleteTodo={onDeleteTodo}
       />
     </View>
   );

@@ -2,17 +2,38 @@ import CustomButton from "@/components/CustomButton";
 import CustomText from "@/components/CustomText"
 import { Colors } from "@/constants/ui";
 import { Status, Todo } from "@/types/todo";
-import { View, StyleSheet } from "react-native"
+import { useState } from "react";
+import { View, StyleSheet, Vibration } from "react-native"
+import DeleteTodoModal from "../Modals/DeleteTodoModal";
 
-type TodoItemProps = Todo;
+type TodoItemProps = Todo & {
+  onDelete: (id: Todo['id']) => void;
+};
 
-export const TodoItem: React.FC<TodoItemProps> = (props) => {
+export const TodoItem: React.FC<TodoItemProps> = ({
+  id,
+  title,
+  status,
+  onDelete,
+}) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const onPressDelete = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const onConfirmDelete = () => {
+    onDelete(id);
+    Vibration.vibrate(50);
+  };
+
   return (
     <View style={styles.container}>
-      <CustomText style={{ textDecorationLine: props.status === Status.COMPLETED ? 'line-through' : 'none' }}>{props.title}</CustomText>
+      <CustomText style={{ textDecorationLine: status === Status.COMPLETED ? 'line-through' : 'none' }}>{title}</CustomText>
       <View style={styles.controlsContainer}>
         <CustomButton icon="pencil" size='small' />
-        <CustomButton icon="trash" size='small' variant='delete' />
+        <CustomButton icon="trash" size='small' variant='delete' onPress={onPressDelete} />
+        <DeleteTodoModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} onDelete={onConfirmDelete} />
       </View>
     </View>)
 }
@@ -35,6 +56,3 @@ const styles = StyleSheet.create({
     gap: 5,
   },
 })
-
-
-
