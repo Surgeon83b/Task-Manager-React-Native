@@ -1,10 +1,30 @@
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { Colors } from "@/constants/ui";
+import useTodo from "@/hooks/useTodo";
+import Header from "@/layout/Header";
+import TodoCreator from "@/layout/TodoCreator";
+import TodoList from "@/layout/TodoList";
+import { View, StyleSheet, StatusBar } from "react-native";
 
 export default function Index() {
+  const {
+    todos,
+    completedTodos,
+    onAddTodo,
+    isLoading,
+  } = useTodo();
+
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={'light-content'}/>
-      <Text style={styles.title}>Task Manager</Text>
+      <StatusBar barStyle={'light-content'} />
+      <Header totalTodos={todos.length} completedTodos={completedTodos.length} />
+      <TodoCreator onAddTodo={onAddTodo} />
+      <TodoList
+        todos={todos}
+      />
     </View>
   );
 }
@@ -12,11 +32,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    backgroundColor: Colors.PRIMARY_BACKGROUND
   },
 });
