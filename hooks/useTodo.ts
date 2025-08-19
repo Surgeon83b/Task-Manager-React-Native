@@ -1,4 +1,4 @@
-import { Status, Todo } from "@/types/todo";
+import { Status, Todo, TodoFormData } from "@/types/todo";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { STORAGE_KEY } from "@/constants/storage";
@@ -7,17 +7,26 @@ const defaultTodos:Todo[] = [
   {
     id: 1,
     title: "Buy milk",
-    status: Status.INPROGRESS
+    description: "Descr 1",
+    status: Status.INPROGRESS,
+    date: 'today',
+    location: 'Minsk'
   },
   {
     id: 2,
     title: "Running",
-    status: Status.COMPLETED
+    description: "Descr 2",
+    status: Status.COMPLETED,
+    date: 'today',
+    location: 'Brest'
   },
   {
     id: 3,
     title: "Cycling",
-    status: Status.INPROGRESS
+    description: "Descr 3",
+    status: Status.INPROGRESS,
+    date: 'today',
+    location: 'Moscow'
   }
 ];
 
@@ -48,8 +57,8 @@ const useTodo = () => {
     }
   };
 
-  const onAddTodo = (title: Todo["title"]) => {
-    setTodos([...todos, { id: Number(new Date()), title, status: Status.INPROGRESS }]);
+  const onAddTodo = (todoData: TodoFormData) => {
+    setTodos([...todos, { ...todoData, id: Number(new Date()), status: Status.INPROGRESS }]);
   };
 
   const onDeleteTodo = (id: Todo['id'])=>{

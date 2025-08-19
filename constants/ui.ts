@@ -4,6 +4,6 @@ export enum Colors {
   PRIMARY_TEXT = 'white',
   PRIMARY_ACTIVE_BUTTON = 'blue',
   PRIMARY_RED = 'red',
-  PLACEHOLDER= 'lightGrey',
+  PLACEHOLDER= '#A9A9A9',
   PRIMARY_BORDER= '#808080',
 }

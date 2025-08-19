@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 12,
     backgroundColor: Colors.SECONDARY_BACKGROUND,
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
   headerMain: {
     marginBottom: 24,

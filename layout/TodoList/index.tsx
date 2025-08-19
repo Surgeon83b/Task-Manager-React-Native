@@ -16,14 +16,15 @@ const TodoList: React.FC<TodoListProps> = ({
       <FlatList
         data={todos}
         keyExtractor={(todo) => todo.id.toString()}
-        renderItem={({ item }) => (
-          <TodoItem
-            id={item.id}
-            title={item.title}
-            status={item.status}
-            onDelete={onDeleteTodo}
-          />
-        )}
+        renderItem={({ item }) => {
+          const { id, title, status, description, date, location } = item;
+          return (
+            <TodoItem
+              id={item.id}
+              title={item.title}
+              status={item.status}
+              onDelete={onDeleteTodo} description={""} date={""} location={""} />)
+        }}
       />
     </View>
   );

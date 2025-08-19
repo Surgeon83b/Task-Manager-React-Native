@@ -11,7 +11,7 @@ type CustomButtonProps = TouchableOpacityProps & {
   variant?: ButtonVariant
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ label, icon, size = 'default', variant = 'primary', disabled, ...props }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ label, icon, size = 'default', variant = 'primary', disabled, style, ...props }) => {
   const textVariant = (() => {
     if (size === 'large') return 'heading';
     return "small";
@@ -26,7 +26,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({ label, icon, size = 'defaul
       size === "large" ? styles.large : null,
       // Variants
       variant === "secondary" ? styles.secondary : null,
-      variant === "delete" ? styles.delete : null
+      variant === "delete" ? styles.delete : null,
+      style,
       ]}
       {...props}
       disabled={disabled}
