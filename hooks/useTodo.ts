@@ -1,33 +1,33 @@
-import { Status, Todo, TodoFormData } from "@/types/todo";
-import { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { STORAGE_KEY } from "@/constants/storage";
+import { Status, Todo, TodoFormData } from '@/types';
+import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_KEY } from '@/constants/storage';
 
-const defaultTodos:Todo[] = [
+const defaultTodos: Todo[] = [
   {
     id: 1,
-    title: "Buy milk",
-    description: "Descr 1",
+    title: 'Buy milk',
+    description: 'Descr 1',
     status: Status.INPROGRESS,
     date: 'today',
-    location: 'Minsk'
+    location: 'Minsk',
   },
   {
     id: 2,
-    title: "Running",
-    description: "Descr 2",
+    title: 'Running',
+    description: 'Descr 2',
     status: Status.COMPLETED,
     date: 'today',
-    location: 'Brest'
+    location: 'Brest',
   },
   {
     id: 3,
-    title: "Cycling",
-    description: "Descr 3",
+    title: 'Cycling',
+    description: 'Descr 3',
     status: Status.INPROGRESS,
     date: 'today',
-    location: 'Moscow'
-  }
+    location: 'Moscow',
+  },
 ];
 
 const useTodo = () => {
@@ -58,14 +58,51 @@ const useTodo = () => {
   };
 
   const onAddTodo = (todoData: TodoFormData) => {
-    setTodos([...todos, { ...todoData, id: Number(new Date()), status: Status.INPROGRESS }]);
+    setTodos([
+      ...todos,
+      { ...todoData, id: Number(new Date()), status: Status.INPROGRESS },
+    ]);
   };
 
-  const onDeleteTodo = (id: Todo['id'])=>{
-      setTodos(todos.filter(todo=>todo.id !== id));
-  }
+  const onDeleteTodo = (id: Todo['id']) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
-  const completedTodos = todos.filter((todo) => todo.status===Status.COMPLETED);
+  const onCheckTodo = (id: Todo['id']) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              status:
+                todo.status === Status.COMPLETED
+                  ? Status.INPROGRESS
+                  : Status.COMPLETED,
+            }
+          : todo
+      )
+    );
+  };
+
+  const onCancelTodo = (id: Todo['id']) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              status:
+                todo.status === Status.CANCELLED
+                  ? Status.INPROGRESS
+                  : Status.CANCELLED,
+            }
+          : todo
+      )
+    );
+  };
+
+  const completedTodos = todos.filter(
+    (todo) => todo.status === Status.COMPLETED
+  );
 
   useEffect(() => {
     loadTodos();
@@ -80,6 +117,8 @@ const useTodo = () => {
   return {
     onAddTodo,
     onDeleteTodo,
+    onCheckTodo,
+    onCancelTodo,
     todos,
     completedTodos,
     isLoading,

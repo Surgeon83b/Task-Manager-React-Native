@@ -3,8 +3,8 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   View,
-} from "react-native";
-import { Colors } from "@/constants/ui";
+} from 'react-native';
+import { Colors } from '@/constants/ui';
 
 type CustomModalProps = {
   isOpen: boolean;
@@ -12,7 +12,7 @@ type CustomModalProps = {
   children: React.ReactNode;
 };
 
-const CustomModal: React.FC<CustomModalProps> = ({
+export const CustomModal: React.FC<CustomModalProps> = ({
   isOpen,
   onClose,
   children,
@@ -38,16 +38,14 @@ const CustomModal: React.FC<CustomModalProps> = ({
 const styles = StyleSheet.create({
   modalBackgroundContainer: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   contentContainer: {
     padding: 20,
     borderRadius: 10,
-    width: "90%",
+    width: '90%',
     backgroundColor: Colors.PRIMARY_BACKGROUND,
   },
 });
-
-export default CustomModal;

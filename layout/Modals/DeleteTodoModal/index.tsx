@@ -1,7 +1,5 @@
-import CustomButton from "@/components/CustomButton";
-import CustomModal from "@/components/CustomModal";
-import CustomText from "@/components/CustomText";
-import { StyleSheet, View } from "react-native";
+import { CustomButton, CustomModal, CustomText } from '@/components';
+import { StyleSheet, View } from 'react-native';
 
 type DeleteTodoModalProps = {
   isOpen: boolean;
@@ -35,8 +33,8 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   buttonsContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     gap: 15,
     marginTop: 20,
   },

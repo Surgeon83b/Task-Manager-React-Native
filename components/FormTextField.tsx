@@ -1,13 +1,13 @@
-import { Colors } from "@/constants/ui";
-import { StyleSheet, View, Text } from "react-native";
-import CustomTextInput, { CustomTextInputProps } from "./CustomTextInput";
+import { Colors } from '@/constants';
+import { StyleSheet, View, Text } from 'react-native';
+import CustomTextInput, { CustomTextInputProps } from './CustomTextInput';
 
-interface FormFieldProps extends CustomTextInputProps {
+interface FormTextFieldProps extends CustomTextInputProps {
   errorMessage?: string;
   label?: string;
 }
 
-const FormField: React.FC<FormFieldProps> = ({
+export const FormTextField: React.FC<FormTextFieldProps> = ({
   errorMessage,
   label,
   isError,
@@ -16,10 +16,7 @@ const FormField: React.FC<FormFieldProps> = ({
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
-      <CustomTextInput
-        {...inputProps}
-        isError={isError || !!errorMessage}
-      />
+      <CustomTextInput {...inputProps} isError={isError || !!errorMessage} />
       {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
     </View>
   );
@@ -44,5 +41,3 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
 });
-
-export default FormField;

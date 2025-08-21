@@ -1,5 +1,5 @@
-import { Colors } from "@/constants/ui";
-import { StyleSheet, TextInput, TextInputProps } from "react-native";
+import { Colors } from '@/constants';
+import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 
 export type CustomTextInputProps = TextInputProps & {
   isError?: boolean;

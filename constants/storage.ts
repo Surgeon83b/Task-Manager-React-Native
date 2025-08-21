@@ -1,1 +1,1 @@
-export const STORAGE_KEY = "@todo_app_data";
+export const STORAGE_KEY = '@todo_app_data';
