@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import DeleteTodoModal from '../Modals/DeleteTodoModal';
+import { getFullFormattedDate } from '@/helpers/date';
 
 type TodoItemProps = Todo & {
   onDelete: (id: Todo['id']) => void;
@@ -78,7 +79,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
                 {title}
               </CustomText>
               <View style={styles.controlsContainer}>
-                <CustomText variant="subTitle">{date}</CustomText>
+                <CustomText variant="subTitle">{getFullFormattedDate(new Date(date))}</CustomText>
               </View>
             </View>
           </View>

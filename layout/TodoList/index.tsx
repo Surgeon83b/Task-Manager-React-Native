@@ -15,6 +15,7 @@ const TodoList: React.FC<TodoListProps> = ({
   onDeleteTodo,
   onCancelTodo,
 }) => {
+  console.log(todos)
   return (
     <View>
       <FlatList

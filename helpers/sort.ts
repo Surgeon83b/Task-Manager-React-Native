@@ -10,7 +10,13 @@ export const sortTodos = (
   const sorted = [...todos].sort((a, b) => {
     switch (sortBy) {
       case 'date':
-        return new Date(a.date).getTime() - new Date(b.date).getTime();
+        const parseDate = (dateStr: string) => {
+          const [year, month, day] = dateStr.split('-').map(Number);
+          console.log(new Date(year, month - 1, day));
+          return new Date(year, month - 1, day).getTime();
+        };
+        return parseDate(a.date) - parseDate(b.date); 
+     // return new Date(a.date).getTime() - new Date(b.date).getTime();
       case 'status':
         const statusOrder = {
           [Status.INPROGRESS]: 0,

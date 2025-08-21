@@ -9,7 +9,7 @@ const defaultTodos: Todo[] = [
     title: 'Buy milk',
     description: 'Descr 1',
     status: Status.INPROGRESS,
-    date: 'today',
+    date: '2025-09-02',
     location: 'Minsk',
   },
   {
@@ -17,7 +17,7 @@ const defaultTodos: Todo[] = [
     title: 'Running',
     description: 'Descr 2',
     status: Status.COMPLETED,
-    date: 'today',
+    date: '2025-08-21',
     location: 'Brest',
   },
   {
@@ -25,7 +25,7 @@ const defaultTodos: Todo[] = [
     title: 'Cycling',
     description: 'Descr 3',
     status: Status.INPROGRESS,
-    date: 'today',
+    date: '2025-10-10',
     location: 'Moscow',
   },
 ];

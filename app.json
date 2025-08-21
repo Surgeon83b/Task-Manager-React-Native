@@ -21,7 +21,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.surgeon83b.TaskManager"
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +34,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a1f53056-e177-4a41-a98e-0d7cc0f1ba8f"
+      }
+    },
+    "owner": "surgeon83b"
   }
 }

@@ -3,7 +3,6 @@ import { TodoFormData } from '@/types';
 import React from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { getFullFormattedDate } from '@/helpers/date';
 
 type TodoCreatorProps = {
   onClose: () => void;
@@ -33,7 +32,7 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ onClose, onAddTodo }) => {
     onAddTodo({
       title,
       description,
-      date: getFullFormattedDate(new Date(data.date)),
+      date,
       location,
     });
     reset();
